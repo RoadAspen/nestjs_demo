@@ -1,5 +1,5 @@
 /**
- * 处理用户提交的请求， 直接对接前端
+ * 用户侧 处理用户提交的请求， 直接对接前端
  */
 import {
   Body,
@@ -24,7 +24,7 @@ export class HelloController {
 
   // @Body 从 post put中解析 x-www-form-urlencoded 数据
   @Post()
-  create(@Body() body) {
+  create(@Body() body: { name: string; age: number }) {
     console.log(body);
     return `你输入的名称是 ${body.name} ,年龄是${body.age}`;
   }
