@@ -3,6 +3,7 @@
  */
 import { ApiProperty } from '@nestjs/swagger';
 
+// 定义
 export enum UserRole {
   Admin = 'Admin',
   User = 'User',
