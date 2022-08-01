@@ -9,7 +9,7 @@ export enum UserRole {
   User = 'User',
 }
 
-export class Hello {
+export class Cat {
   @ApiProperty({ example: 'Jack', description: '名称' })
   name: string;
   @ApiProperty({ example: 20, description: '年纪' })

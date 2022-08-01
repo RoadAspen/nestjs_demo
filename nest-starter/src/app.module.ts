@@ -1,9 +1,9 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
-import { HelloModule } from './modules/hello/hello.module';
+import { CatModule } from './modules/cat/cat.module';
 
 @Module({
-  imports: [HelloModule],
+  imports: [CatModule],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
