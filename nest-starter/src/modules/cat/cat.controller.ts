@@ -7,6 +7,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Query,
@@ -33,7 +34,7 @@ export class CatController {
   @Get()
   @ApiOperation({ summary: '获取一条数据' })
   @ApiQuery({ name: 'role', enum: UserRole })
-  getCat(@Query('id') id: string) {
+  getCat(@Query('id', ParseIntPipe) id: number) {
     return this.catService.readOne(id) || '没有这个猫咪';
   }
 
@@ -58,14 +59,14 @@ export class CatController {
   // 可以同时解析 param 和 body
   @Patch(':id')
   @ApiOperation({ summary: '更新一条数据' })
-  update(@Param('id') id: string, @Body() body: CreateCatDto) {
+  update(@Param('id', ParseIntPipe) id: number, @Body() body: CreateCatDto) {
     console.log(body);
     return this.catService.update({ id, data: body });
   }
 
   @Delete(':id')
   @ApiOperation({ summary: '删除一条数据' })
-  remove(@Param('id') id: string) {
+  remove(@Param('id', ParseIntPipe) id: number) {
     return this.catService.remove(id);
   }
 }
