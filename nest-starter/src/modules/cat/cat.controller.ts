@@ -9,6 +9,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -29,10 +30,10 @@ export class CatController {
   constructor(private readonly catService: CatService) {}
 
   // @Param 从路由中解析参数
-  @Get(':id')
+  @Get()
   @ApiOperation({ summary: '获取一条数据' })
   @ApiQuery({ name: 'role', enum: UserRole })
-  getCat(@Param('id') id: number) {
+  getCat(@Query('id') id: string) {
     return this.catService.readOne(id) || '没有这个猫咪';
   }
 
@@ -57,7 +58,7 @@ export class CatController {
   // 可以同时解析 param 和 body
   @Patch(':id')
   @ApiOperation({ summary: '更新一条数据' })
-  update(@Param('id') id: number, @Body() body: CreateCatDto) {
+  update(@Param('id') id: string, @Body() body: CreateCatDto) {
     console.log(body);
     return this.catService.update({ id, data: body });
   }
