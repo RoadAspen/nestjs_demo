@@ -8,6 +8,7 @@ import { CatModule } from './modules/cat/cat.module';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     console.log('consumer', consumer);
+    // 添加 logger 中间件
     consumer.apply(LoggerMiddleware).forRoutes('hello');
   }
 }
